@@ -87,13 +87,13 @@ public class ZabbixMetricsReporter implements ServletContextListener {
             if (zabbixHostname != null) {
                 zabbixReporter = new ZabbixReporter.Builder(getRegistry(config))
                         .hostName(reportSourceAsUserName ? getUsername() : getSource())
-                        .filter(filter)
+                        .filter(filter).name("TestTimer")
                         //                .prefix("")
                         //                .replacePercentSign("")
                         .build(new ZabbixSender(zabbixHostname, zabbixPort));
 
                 zabbixReporter.start(reportPeriodSeconds, TimeUnit.SECONDS);
-                LOG.info("222zabbixReporter: " +zabbixReporter.toString());
+                LOG.info("222zabbixReporter: " +zabbixReporter);
             } else {
                 LOG.info("ZabbixMetricsReporter not created as Zabbix Hostname was null");
             }
