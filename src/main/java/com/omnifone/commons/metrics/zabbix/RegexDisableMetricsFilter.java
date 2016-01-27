@@ -57,12 +57,15 @@ public class RegexDisableMetricsFilter implements MetricFilter {
             //Creating JSON object
             JSONObject metricsJsonObj = new JSONObject();
             metricsJsonObj.put("Name", name);
-            metricsJsonObj.put("Metrics", metric);
+            logger.debug("Name JSON object: " +name);
+                    metricsJsonObj.put("Metrics", metric);
+            logger.debug("Name JSON object: " +metric);
 
             // If it matches, don't send. Otherwise, send.
            // retVal = !disablePattern.matcher(name).matches();
 
             retVal = !disablePattern.matcher(metricsJsonObj.toJSONString()).matches();
+            logger.debug("JSON Object: " +metricsJsonObj);
             System.out.println("JSON Object: " +metricsJsonObj);
         }
 
