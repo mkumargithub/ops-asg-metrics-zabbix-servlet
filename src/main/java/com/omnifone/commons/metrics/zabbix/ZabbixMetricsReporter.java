@@ -85,9 +85,7 @@ public class ZabbixMetricsReporter implements ServletContextListener {
 
             if (zabbixHostname != null) {
                 zabbixReporter = new ZabbixReporter.Builder(getRegistry(config))
-                        .hostName(reportSourceAsUserName ? getUsername() : getSource())
-                        .filter(filter)
-                        //                .prefix("")
+                        .hostName(reportSourceAsUserName ? getUsername() : getSource()).filter(filter).prefix("timers[")
                         //                .replacePercentSign("")
                         .build(new ZabbixSender(zabbixHostname, zabbixPort));
                 LOG.info("##Filter: "+String.valueOf(filter));
