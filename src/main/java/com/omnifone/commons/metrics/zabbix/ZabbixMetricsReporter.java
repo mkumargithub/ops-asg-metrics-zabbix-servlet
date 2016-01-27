@@ -71,6 +71,7 @@ public class ZabbixMetricsReporter implements ServletContextListener {
 
             // default predicate is everything
             MetricFilter filter = MetricFilter.ALL;
+            LOG.info("111Filter: " +filter);
 
             // but specific metrics can be disabled by specifying a regexp
             String metricsFilterDisabledRegex = config.getString(REPORT_DISABLED);
@@ -92,7 +93,7 @@ public class ZabbixMetricsReporter implements ServletContextListener {
                         .build(new ZabbixSender(zabbixHostname, zabbixPort));
 
                 zabbixReporter.start(reportPeriodSeconds, TimeUnit.SECONDS);
-                LOG.info("###zabbixReporter: " +zabbixReporter);
+                LOG.info("222zabbixReporter: " +zabbixReporter.toString());
             } else {
                 LOG.info("ZabbixMetricsReporter not created as Zabbix Hostname was null");
             }
