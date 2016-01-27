@@ -77,6 +77,7 @@ public class ZabbixMetricsReporter implements ServletContextListener {
             if (metricsFilterDisabledRegex != null) {
                 LOG.info("Excluding the reporting of matches to '{}' to zabbix. will report all others", metricsFilterDisabledRegex);
                 filter = new RegexDisableMetricsFilter(metricsFilterDisabledRegex);
+                LOG.info("#####Filetr : " +filter);
             } else {
                 LOG.info("Reporting all metrics to zabbix");
             }
@@ -89,7 +90,8 @@ public class ZabbixMetricsReporter implements ServletContextListener {
                         //                .prefix("")
                         //                .replacePercentSign("")
                         .build(new ZabbixSender(zabbixHostname, zabbixPort));
-
+                LOG.info("##Filter: "+String.valueOf(filter));
+                LOG.info("###zabbixReporter: " +zabbixReporter);
                 zabbixReporter.start(reportPeriodSeconds, TimeUnit.SECONDS);
             } else {
                 LOG.info("ZabbixMetricsReporter not created as Zabbix Hostname was null");
