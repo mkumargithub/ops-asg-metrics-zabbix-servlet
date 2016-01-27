@@ -57,7 +57,7 @@ public class RegexDisableMetricsFilter implements MetricFilter {
             //Creating JSON object
             JSONObject metricsJsonObj = new JSONObject();
             metricsJsonObj.put("Name", name);
-            metricsJsonObj.put("Metrics", metric.getClass());
+            metricsJsonObj.put("Metrics", metric);
 
             // If it matches, don't send. Otherwise, send.
            // retVal = !disablePattern.matcher(name).matches();
