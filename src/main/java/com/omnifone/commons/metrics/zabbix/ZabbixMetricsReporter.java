@@ -85,12 +85,14 @@ public class ZabbixMetricsReporter implements ServletContextListener {
 
             if (zabbixHostname != null) {
                 zabbixReporter = new ZabbixReporter.Builder(getRegistry(config))
-                        .hostName(reportSourceAsUserName ? getUsername() : getSource()).filter(filter).prefix("timers[")
+                        .hostName(reportSourceAsUserName ? getUsername() : getSource())
+                        .filter(filter)
+                        //                .prefix("")
                         //                .replacePercentSign("")
                         .build(new ZabbixSender(zabbixHostname, zabbixPort));
-                LOG.info("##Filter: "+String.valueOf(filter));
-                LOG.info("###zabbixReporter: " +zabbixReporter);
+
                 zabbixReporter.start(reportPeriodSeconds, TimeUnit.SECONDS);
+                LOG.info("###zabbixReporter: " +zabbixReporter);
             } else {
                 LOG.info("ZabbixMetricsReporter not created as Zabbix Hostname was null");
             }
@@ -108,8 +110,10 @@ public class ZabbixMetricsReporter implements ServletContextListener {
 
     private static MetricRegistry getRegistry(Configuration config) {
         String registryName = null;
+
         try {
             registryName = config.getString(METRIC_REGISTRY_NAME_PROPERTY);
+            LOG.info("***registryName: " +registryName);
 
         } catch (Exception e) {
             LOG.debug("Unable to retrieve metric registry name from config");
@@ -119,6 +123,7 @@ public class ZabbixMetricsReporter implements ServletContextListener {
                 registryName == null
                         ? METRIC_REGISTRY_NAME_DEFAULT
                         : registryName);
+
     }
 
     /**
