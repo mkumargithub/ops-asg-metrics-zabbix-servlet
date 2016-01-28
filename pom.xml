@@ -16,11 +16,11 @@
         <maven.compiler.target>1.7</maven.compiler.target>
     </properties>
 
-    <scm>
-        <connection>scm:git:ssh://github.com/omnifone/ops-asg-metrics-zabbix-servlet.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/omnifone/ops-asg-metrics-zabbix-servlet.git</developerConnection>
-        <url>http://github.com/omnifone/ops-asg-metrics-zabbix-servlet</url>
-    </scm>
+    <!--<scm>
+        <connection>scm:git:ssh://github.com/omnifone/metrics-zabbix-servlet.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/omnifone/metrics-zabbix-servlet.git</developerConnection>
+        <url>http://github.com/omnifone/metrics-zabbix-servlet</url>
+    </scm>-->
 
     <dependencies>
         <dependency>
