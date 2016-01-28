@@ -71,14 +71,12 @@ public class ZabbixMetricsReporter implements ServletContextListener {
 
             // default predicate is everything
             MetricFilter filter = MetricFilter.ALL;
-            LOG.info("111Filter: " +filter);
 
             // but specific metrics can be disabled by specifying a regexp
             String metricsFilterDisabledRegex = config.getString(REPORT_DISABLED);
             if (metricsFilterDisabledRegex != null) {
                 LOG.info("Excluding the reporting of matches to '{}' to zabbix. will report all others", metricsFilterDisabledRegex);
                 filter = new RegexDisableMetricsFilter(metricsFilterDisabledRegex);
-                LOG.info("#####Filetr : " +filter);
             } else {
                 LOG.info("Reporting all metrics to zabbix");
             }
@@ -87,13 +85,13 @@ public class ZabbixMetricsReporter implements ServletContextListener {
             if (zabbixHostname != null) {
                 zabbixReporter = new ZabbixReporter.Builder(getRegistry(config))
                         .hostName(reportSourceAsUserName ? getUsername() : getSource())
-                        .filter(filter).name("TestTimer")
+                        .filter(filter)
                         //                .prefix("")
                         //                .replacePercentSign("")
                         .build(new ZabbixSender(zabbixHostname, zabbixPort));
 
                 zabbixReporter.start(reportPeriodSeconds, TimeUnit.SECONDS);
-                LOG.info("222zabbixReporter: " +zabbixReporter);
+
             } else {
                 LOG.info("ZabbixMetricsReporter not created as Zabbix Hostname was null");
             }
@@ -114,7 +112,6 @@ public class ZabbixMetricsReporter implements ServletContextListener {
 
         try {
             registryName = config.getString(METRIC_REGISTRY_NAME_PROPERTY);
-            LOG.info("***registryName: " +registryName);
 
         } catch (Exception e) {
             LOG.debug("Unable to retrieve metric registry name from config");

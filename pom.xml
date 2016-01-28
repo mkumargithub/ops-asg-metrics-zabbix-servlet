@@ -17,16 +17,16 @@
     </properties>
 
     <scm>
-        <connection>scm:git:ssh://github.com/omnifone/metrics-zabbix-servlet.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/omnifone/metrics-zabbix-servlet.git</developerConnection>
-        <url>http://github.com/omnifone/metrics-zabbix-servlet</url>
+        <connection>scm:git:ssh://github.com/omnifone/ops-asg-metrics-zabbix-servlet.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/omnifone/ops-asg-metrics-zabbix-servlet.git</developerConnection>
+        <url>http://github.com/omnifone/ops-asg-metrics-zabbix-servlet</url>
     </scm>
 
     <dependencies>
         <dependency>
             <groupId>io.github.hengyunabc</groupId>
             <artifactId>metrics-zabbix</artifactId>
-            <version>0.0.1-OMNIFONE</version>
+            <version>0.0.1-OMNIFONETest</version>
         </dependency>
         <dependency>
             <groupId>commons-configuration</groupId>

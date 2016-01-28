@@ -33,7 +33,7 @@ public class RegexDisableMetricsFilter implements MetricFilter {
 
     @Override
     public boolean matches(String name, Metric metric) {
-        logger.debug("Predicate.matches : Name[{}] Metric[{}]",
+        logger.debug("Predicate.matches : timers[{}] Metric[{}]",
                 name, metric.getClass());
         if (name == null || metric == null) {
             return false;
