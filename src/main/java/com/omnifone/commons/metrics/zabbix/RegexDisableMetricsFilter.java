@@ -1,46 +1,33 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.omnifone.commons.metrics.zabbix;
 
-
-import io.dropwizard.metrics.Metric;
-import io.dropwizard.metrics.MetricFilter;
-import io.dropwizard.metrics.MetricName;
-import org.json.simple.JSONObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+import com.codahale.metrics.Metric;
+import com.codahale.metrics.MetricFilter;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
 /**
  *
- * @author mkumar
+ * @author sandygordon
  */
-
-/**
- * Matches against names of metrics, filtering unwanted ones out and avoid publishing them.
- * This class provides regular expression based matching to
- * the actual reporter class.
- */
-
-
 public class RegexDisableMetricsFilter implements MetricFilter {
-    private static final Logger logger = LoggerFactory.getLogger(RegexDisableMetricsFilter.class);
+
     private final Pattern disablePattern;
 
     public RegexDisableMetricsFilter(String disableRegex) {
-        logger.debug("Predicate: Disabled: [{}]", disableRegex);
         Objects.requireNonNull(disableRegex, "MetricsFilter Disable Regex can't be null");
         disablePattern = Pattern.compile(disableRegex);
     }
 
     @Override
-    public boolean matches(MetricName name, Metric metric) {
-        logger.debug("Predicate.matches : timers[{}] Metric[{}]",
-                name, metric.getClass());
+    public boolean matches(String name, Metric metric) {
         if (name == null || metric == null) {
             return false;
         }
-        return !disablePattern.matcher(name.getKey()).matches();
-
+        return !disablePattern.matcher(name).matches();
     }
 }
