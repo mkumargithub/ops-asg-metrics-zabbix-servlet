@@ -5,9 +5,10 @@
  */
 package com.omnifone.commons.metrics.zabbix;
 
+
+
+
 import com.codahale.metrics.MetricFilter;
-import com.codahale.metrics.MetricRegistry;
-import com.codahale.metrics.SharedMetricRegistries;
 import io.github.hengyunabc.metrics.ZabbixReporter;
 import io.github.hengyunabc.zabbix.sender.ZabbixSender;
 import org.apache.commons.configuration.CompositeConfiguration;
@@ -70,13 +71,13 @@ public class ZabbixMetricsReporter implements ServletContextListener {
             int zabbixPort = config.getInt(PORT, PORT_DEFAULT);
 
             // default predicate is everything
-            MetricFilter filter = MetricFilter.ALL;
+            com.codahale.metrics.MetricFilter filter = com.codahale.metrics.MetricFilter.ALL;
 
             // but specific metrics can be disabled by specifying a regexp
             String metricsFilterDisabledRegex = config.getString(REPORT_DISABLED);
             if (metricsFilterDisabledRegex != null) {
                 LOG.info("Excluding the reporting of matches to '{}' to zabbix. will report all others", metricsFilterDisabledRegex);
-                filter = new RegexDisableMetricsFilter(metricsFilterDisabledRegex);
+                filter = (MetricFilter) new RegexDisableMetricsFilter(metricsFilterDisabledRegex);
             } else {
                 LOG.info("Reporting all metrics to zabbix");
             }
@@ -107,7 +108,7 @@ public class ZabbixMetricsReporter implements ServletContextListener {
         }
     }
 
-    private static MetricRegistry getRegistry(Configuration config) {
+    private static com.codahale.metrics.MetricRegistry getRegistry(Configuration config) {
         String registryName = null;
 
         try {
@@ -117,7 +118,7 @@ public class ZabbixMetricsReporter implements ServletContextListener {
             LOG.debug("Unable to retrieve metric registry name from config");
         }
 
-        return SharedMetricRegistries.getOrCreate(
+        return com.codahale.metrics.SharedMetricRegistries.getOrCreate(
                 registryName == null
                         ? METRIC_REGISTRY_NAME_DEFAULT
                         : registryName);

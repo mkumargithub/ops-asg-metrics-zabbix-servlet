@@ -1,7 +1,9 @@
 package com.omnifone.commons.metrics.zabbix;
 
-import com.codahale.metrics.Metric;
-import com.codahale.metrics.MetricFilter;
+
+import io.dropwizard.metrics.Metric;
+import io.dropwizard.metrics.MetricFilter;
+import io.dropwizard.metrics.MetricName;
 import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,13 +34,13 @@ public class RegexDisableMetricsFilter implements MetricFilter {
     }
 
     @Override
-    public boolean matches(String name, Metric metric) {
+    public boolean matches(MetricName name, Metric metric) {
         logger.debug("Predicate.matches : timers[{}] Metric[{}]",
                 name, metric.getClass());
         if (name == null || metric == null) {
             return false;
         }
-        return !disablePattern.matcher(name).matches();
+        return !disablePattern.matcher(name.getKey()).matches();
 
     }
 }
