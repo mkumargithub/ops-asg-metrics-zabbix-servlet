@@ -5,9 +5,10 @@
  */
 package com.omnifone.commons.metrics.zabbix;
 
-import com.codahale.metrics.MetricFilter;
-import com.codahale.metrics.MetricRegistry;
-import com.codahale.metrics.SharedMetricRegistries;
+
+import io.dropwizard.metrics.MetricFilter;
+import io.dropwizard.metrics.MetricRegistry;
+import io.dropwizard.metrics.SharedMetricRegistries;
 import io.github.hengyunabc.metrics.ZabbixReporter;
 import io.github.hengyunabc.zabbix.sender.ZabbixSender;
 import org.apache.commons.configuration.CompositeConfiguration;
@@ -83,12 +84,10 @@ public class ZabbixMetricsReporter implements ServletContextListener {
 
 
             if (zabbixHostname != null) {
-                zabbixReporter = new ZabbixReporter.Builder(getRegistry(config))
-                        .hostName(reportSourceAsUserName ? getUsername() : getSource())
-                        .filter(filter)
-                        //                .prefix("")
-                        //                .replacePercentSign("")
-                        .build(new ZabbixSender(zabbixHostname, zabbixPort));
+                ZabbixReporter.Builder builder = new ZabbixReporter.Builder(getRegistry(config));
+                builder.hostName(reportSourceAsUserName ? getUsername() : getSource());
+                builder.filter(filter);
+                builder.build(new ZabbixSender(zabbixHostname, zabbixPort));
 
                 zabbixReporter.start(reportPeriodSeconds, TimeUnit.SECONDS);
 
