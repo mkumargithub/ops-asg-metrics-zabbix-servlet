@@ -40,7 +40,7 @@ public class ZabbixMetricsReporter implements ServletContextListener {
     private static final int REPORT_PERIOD_SECS_DEFAULT = 60;
     private static final String HOSTNAME = "zabbix.metrics.hostname";
     private static final String PORT = "zabbix.metrics.port";
-    private static final int PORT_DEFAULT = 5000;
+    private static final int PORT_DEFAULT = 10051;
 
     private ZabbixReporter zabbixReporter;
 
