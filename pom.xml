@@ -30,9 +30,9 @@
     </dependency>
 
     <dependency>
-        <groupId>oi.hengyunabc</groupId>
+        <groupId>io.github.hengyunabc</groupId>
         <artifactId>zabbix-sender</artifactId>
-        <version>0.0.1-OMNIFONETest</version>
+        <version>0.0.1-OMNIFONE</version>
     </dependency>
 
     <dependency>
