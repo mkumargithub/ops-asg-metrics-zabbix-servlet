@@ -30,6 +30,12 @@
     </dependency>
 
     <dependency>
+        <groupId>oi.hengyunabc</groupId>
+        <artifactId>zabbix-sender</artifactId>
+        <version>0.0.1-OMNIFONETest</version>
+    </dependency>
+
+    <dependency>
         <groupId>io.dropwizard.metrics</groupId>
         <artifactId>metrics-core</artifactId>
         <version>3.1.2-OMNIFONE</version>

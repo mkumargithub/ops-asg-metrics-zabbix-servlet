@@ -9,9 +9,11 @@ import com.codahale.metrics.MetricFilter;
 import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.SharedMetricRegistries;
 import io.github.hengyunabc.metrics.ZabbixReporter;
-import io.github.hengyunabc.zabbix.sender.ZabbixSender;
+import io.hengyunabc.zabbix.sender.DataObject;
+import io.hengyunabc.zabbix.sender.ZabbixSender;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -43,6 +45,7 @@ public class ZabbixMetricsReporter implements ServletContextListener {
     private static final int PORT_DEFAULT = 10051;
 
     private ZabbixReporter zabbixReporter;
+    private List<DataObject> dataObjects;
 
     @Override
     public void contextInitialized(ServletContextEvent event) {
@@ -67,6 +70,8 @@ public class ZabbixMetricsReporter implements ServletContextListener {
                 filter = new RegexDisableMetricsFilter(metricsFilterDisabledRegex);
             }
 
+
+
             if (zabbixHostname != null) {
                 zabbixReporter = new ZabbixReporter.Builder(getRegistry(config))
                         .hostName(reportSourceAsUserName ? getUsername() : getSource())
@@ -90,6 +95,7 @@ public class ZabbixMetricsReporter implements ServletContextListener {
         }
     }
 
+
     private static MetricRegistry getRegistry(Configuration config) {
         String registryName = null;
         try {
@@ -103,6 +109,9 @@ public class ZabbixMetricsReporter implements ServletContextListener {
                         ? METRIC_REGISTRY_NAME_DEFAULT
                         : registryName);
     }
+
+
+
 
     /**
      * Default source is the canonical host name. However, allow override.
