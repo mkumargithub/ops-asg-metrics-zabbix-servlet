@@ -45,7 +45,6 @@ public class ZabbixMetricsReporter implements ServletContextListener {
     private static final int PORT_DEFAULT = 10051;
 
     private ZabbixReporter zabbixReporter;
-    private List<DataObject> dataObjects;
 
     @Override
     public void contextInitialized(ServletContextEvent event) {
@@ -80,6 +79,8 @@ public class ZabbixMetricsReporter implements ServletContextListener {
                                 //                .replacePercentSign("")
                         .build(new ZabbixSender(zabbixHostname, zabbixPort));
                 zabbixReporter.start(reportPeriodSeconds, TimeUnit.SECONDS);
+                LOG.info("***Keys:" +zabbixReporter.toString());
+
             } else {
                 LOG.info("ZabbixMetricsReporter not created as Zabbix Hostname was null");
             }
@@ -87,6 +88,7 @@ public class ZabbixMetricsReporter implements ServletContextListener {
             LOG.error("Failed to initialize zabbix metrics reporter.", t);
         }
     }
+
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
