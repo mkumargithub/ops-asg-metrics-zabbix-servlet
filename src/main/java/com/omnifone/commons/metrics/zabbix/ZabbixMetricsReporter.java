@@ -79,7 +79,7 @@ public class ZabbixMetricsReporter implements ServletContextListener {
                                 //                .replacePercentSign("")
                         .build(new ZabbixSender(zabbixHostname, zabbixPort));
                 zabbixReporter.start(reportPeriodSeconds, TimeUnit.SECONDS);
-                LOG.info("***Keys:" +zabbixReporter.toString());
+                LOG.info("***AllKeys:" +zabbixReporter.toString());
 
             } else {
                 LOG.info("ZabbixMetricsReporter not created as Zabbix Hostname was null");
