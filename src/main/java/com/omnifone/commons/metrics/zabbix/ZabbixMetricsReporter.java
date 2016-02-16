@@ -112,9 +112,6 @@ public class ZabbixMetricsReporter implements ServletContextListener {
                         : registryName);
     }
 
-
-
-
     /**
      * Default source is the canonical host name. However, allow override.
      *
