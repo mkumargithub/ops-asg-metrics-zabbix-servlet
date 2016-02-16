@@ -129,3 +129,4 @@ public class ZabbixMetricsReporter implements ServletContextListener {
         return System.getProperty("user.name");
     }
 }
+
