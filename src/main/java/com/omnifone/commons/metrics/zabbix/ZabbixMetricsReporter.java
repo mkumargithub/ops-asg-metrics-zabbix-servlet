@@ -70,7 +70,6 @@ public class ZabbixMetricsReporter implements ServletContextListener {
             }
 
 
-
             if (zabbixHostname != null) {
                 zabbixReporter = new ZabbixReporter.Builder(getRegistry(config))
                         .hostName(reportSourceAsUserName ? getUsername() : getSource())
@@ -79,7 +78,7 @@ public class ZabbixMetricsReporter implements ServletContextListener {
                                 //                .replacePercentSign("")
                         .build(new ZabbixSender(zabbixHostname, zabbixPort));
                 zabbixReporter.start(reportPeriodSeconds, TimeUnit.SECONDS);
-                LOG.info("***AllKeys:" +zabbixReporter.toString());
+                LOG.info("***AllKeys:" + zabbixReporter.toString());
 
             } else {
                 LOG.info("ZabbixMetricsReporter not created as Zabbix Hostname was null");
