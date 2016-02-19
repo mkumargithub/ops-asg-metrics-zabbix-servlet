@@ -88,14 +88,12 @@ public class ZabbixMetricsReporter implements ServletContextListener {
         }
     }
 
-
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
         if (zabbixReporter != null) {
             zabbixReporter.stop();
         }
     }
-
 
     private static MetricRegistry getRegistry(Configuration config) {
         String registryName = null;
