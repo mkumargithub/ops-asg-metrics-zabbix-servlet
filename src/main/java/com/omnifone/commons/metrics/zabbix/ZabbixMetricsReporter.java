@@ -118,7 +118,6 @@ public class ZabbixMetricsReporter implements ServletContextListener {
     public String getSource() throws UnknownHostException {
         return InetAddress.getLocalHost().getCanonicalHostName();
     }
-
     private String getUsername() {
         return System.getProperty("user.name");
     }
