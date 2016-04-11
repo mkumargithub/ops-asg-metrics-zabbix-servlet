@@ -26,7 +26,7 @@
     <dependency>
         <groupId>io.github.hengyunabc</groupId>
         <artifactId>metrics-zabbix</artifactId>
-        <version>0.0.1-OMNIFONETest</version>
+        <version>0.0.1-OMNIFONE</version>
     </dependency>
 
     <dependency>
