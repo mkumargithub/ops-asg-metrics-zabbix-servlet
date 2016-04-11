@@ -2,7 +2,6 @@
 This is a small servlet project for metrics in order to report measures to Zabbix.
 
 ## Import with Maven: ##
- 
     
     <dependency>
             <groupId>com.omnifone.commons.metrics</groupId>
