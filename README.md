@@ -10,3 +10,13 @@ This is a small servlet project for metrics in order to report measures to Zabbi
             <version>1.0.0-OMNIFONE</version>
     </dependency>
     ...
+
+## Configuration in Tomcat
+
+| Configuration parameter | Description | Example |
+| --- | ----- | --- |
+| -Dzabbix.metrics.disabled | To disable any metrics API(s), if you need to pass more than one APIs please use with comma (,) | 	-Dzabbix.metrics.disabled=mss.gateway.api.getArtist.requests |
+|-Dzabbix.metrics.hostname |	To pass hostname |	-Dzabbix.metrics.hostname=te1.oss-hub.uk3.ribob01.net |
+| -Dzabbix.metrics.port | zabbix port, by default is set as 10051	| -Dzabbix.metrics.port=10051 |
+| -Dzabbix.metrics.report.period.seconds |	By default report period is set as 60s, use this configuration if you need to change period, values are in seconds.	| -Dzabbix.metrics.report.period.seconds=60 |
+| -Dzabbix.metrics.source.username |	To pass any specific user name	| -Dzabbix.metrics.source.username=UserName |
