@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 
 /**
  *
- * @author sandygordon
+ * @author mkumar
  */
 public class RegexDisableMetricsFilter implements MetricFilter {
 
