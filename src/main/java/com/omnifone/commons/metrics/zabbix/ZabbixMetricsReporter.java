@@ -27,7 +27,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  *
- * @author sandygordon
+ * @author mkumar
  */
 @WebListener
 public class ZabbixMetricsReporter implements ServletContextListener {
