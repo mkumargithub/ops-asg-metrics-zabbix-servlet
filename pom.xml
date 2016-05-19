@@ -8,7 +8,7 @@
 </parent>
 <groupId>com.omnifone.commons.metrics</groupId>
 <artifactId>ops-asg-metrics-zabbix-servlet</artifactId>
-<version>1.0.0-OMNIFONE</version>
+<version>1.0.0</version>
 
 <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -26,13 +26,13 @@
     <dependency>
         <groupId>io.github.hengyunabc</groupId>
         <artifactId>metrics-zabbix</artifactId>
-        <version>0.0.1-OMNIFONE</version>
+        <version>0.0.1-zabbix</version>
     </dependency>
 
     <dependency>
         <groupId>io.github.hengyunabc</groupId>
         <artifactId>zabbix-sender</artifactId>
-        <version>0.0.1-OMNIFONE</version>
+        <version>0.0.1</version>
     </dependency>
 
     <dependency>
